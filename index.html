@@ -1,30 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
-	<title>Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</title>
+	<title>Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios. Estudios previos</title>
 	<meta http-equiv="content-type" content="text/html"/>
-	<meta name="description" content="archiving thoughts and images" />
+	<meta name="description" content="hacia base de datos publica burbuja inmobiliaria. Estudios previos" />
 	<meta charset="utf-8">
-	<!-- generic meta -->
-	<meta content="numeroteca" name="author" />
-	<meta name="title" content="Tarjetas Black: Gráfico de gastos de los directivos de Caja Madrid y Bankia | numeroteca.org" />
-	<meta content="Gráfico para explicar cómo y en qué se gastaron 15 millones de euros los directivos y consejeros de Caja Madrid y Bankia." />
-	<meta content="corrupción, corruption, Bankia, Caja Madrid" name="keywords" />
-	<!-- facebook meta -->
-	<meta property="og:title" content="Gastos con las tarjetas Black de Caja Madrid y Bankia" />
-	<meta property="og:type" content="article" />
-	<meta property="og:description" content="Gráfico para explicar cómo y en qué se gastaron 15 millones de euros los directivos y consejeros de Caja Madrid y Bankia." />
-	<meta content="corrupción, corruption, Bankia, Caja Madrid" />
-	<meta property="og:url" content="http://numeroteca.org/tarjetasblack" />
-	<!-- twitter meta -->
-	<meta name="twitter:card" content="summary_large_image" />
-	<meta name="twitter:site" content="@numeroteca">
-	<meta name="twitter:title" content="Tarjetas Black: Cómo se gastaron 15.000.000 los directivos de Caja Madrid y Bankia" />
-	<meta name="twitter:description" content="Gráfico para explicar cómo y en qué se gastaron 15 millones de euros los directivos y consejeros de Caja Madrid y Bankia." />
-	<meta name="twitter:creator" content="@numeroteca">
-	<meta name="twitter:image:src" content="http://numeroteca.org/tarjetasblack/img/tarjeta-black-miguel-blesa-a.png">
-	<meta property="twitter:account_id" content="1494951285" />
-	
+
 	<link rel="stylesheet" href="css/leaflet.css">
 	<link rel="stylesheet" href="css/style.css">
 	
@@ -33,7 +14,7 @@
 <div id="fb-root"></div>
 	<div class="container main-container">
 		<h1>Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</h1>
-		<div id="description">
+		<div id="desc">
       <p>Superposici&oacute;n de bases de datos de estudios previos. <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n</a>.<br>
       <p id="leyenda">Leyenda: 
       	<span style="background-color:#DD0000;color:white;">Especulaci&oacute;n (Ecologistas en Acci&oacute;n)</span>
@@ -44,7 +25,6 @@
       	<span style="background-color:#990099;color:white">Neoruinas (Tenerife)</span>
       </p>
 		</div>
-		
 		<script src="data/hacia.js"></script>
 		
 		
@@ -58,12 +38,12 @@
 		<script src="js/leaflet.js"></script>
 		<div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="width: 100%; height: 600px; position: relative;"></div>
 		<div class="page-footer">
-			<p></p>
+			<p>Contribuye mejorando el C&oacute;digo en <a href="https://github.com/montera34/previohbdpci">https://github.com/montera34/previohbdpci</a></p>
 		</div>
 	</div>
 </div>
 <script>
-		var map = L.map('map').setView([39.74739, -2], 5);
+		var map = L.map('map').setView([37, -2], 5);
 
 
 		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
@@ -75,15 +55,22 @@
 		}).addTo(map);
 
 
-		function onEachFeature(feature, layer) {
+		/*function onEachFeature(feature, layer) {
 			var popupContent = "<p>I started out as a GeoJSON " +
 					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
 
-			if (feature.properties && feature.properties.popupContent) {
-				popupContent += feature.properties.popupContent;
+			if (feature.properties && feature.properties.description) {
+				popupContent += feature.properties.description;
 			}
 
-			layer.bindPopup(popupContent);
+			layer.bindPopup(description);
+		}*/
+		
+		function onEachFeature(feature, layer) {
+    // does this feature have a property named description?
+    if (feature.properties && feature.properties.name) {
+        layer.bindPopup("<h4>"+feature.properties.name+"</h4><br><p>"+feature.properties.description+"</p>");
+				}
 		}
 
 		
@@ -143,6 +130,7 @@
 		
 		//nacion rotonda
 		var myLayer = L.geoJson(nacionrotonda, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, nacionrotondaOptions);
 		  }
@@ -150,6 +138,7 @@
 		
 		//ecologistas
 		var myLayer2 = L.geoJson(especulacionecologistas, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, especulacionOptions);
 		  }
@@ -157,6 +146,7 @@
 		
 		//ruinas modernas
 		var myLayer2 = L.geoJson(ruinasmodernas, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, ruinasOptions);
 		  }
@@ -164,6 +154,7 @@
 
 		//6000km
 		var myLayer4 = L.geoJson(db6000km, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, db6000kmOptions);
 		  }
@@ -171,6 +162,7 @@
 		
 		//mediturban
 		var myLayer5 = L.geoJson(mediturban, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, mediturbanOptions);
 		  }
@@ -178,6 +170,7 @@
 		
 		//neoruinas
 		var myLayer6 = L.geoJson(neoruinas, {
+			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, neoruinasOptions);
 		  }
