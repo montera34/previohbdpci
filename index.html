@@ -69,7 +69,7 @@
 		function onEachFeature(feature, layer) {
     // does this feature have a property named description?
     if (feature.properties && feature.properties.name) {
-        layer.bindPopup("<h4>"+feature.properties.name+"</h4><br><p>"+feature.properties.description+"</p>");
+        layer.bindPopup("<strong>"+feature.properties.name+"</strong><br>"+feature.properties.description);
 				}
 		}
 
