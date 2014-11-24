@@ -6,7 +6,7 @@
 	<meta name="description" content="hacia base de datos publica burbuja inmobiliaria. Estudios previos" />
 	<meta charset="utf-8">
 
-	<link rel="stylesheet" href="css/leaflet.css">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.5/leaflet.css" />
 	<link rel="stylesheet" href="css/style.css">
 	
 </head>
@@ -27,15 +27,14 @@
 		</div>
 		<script src="data/hacia.js"></script>
 		
-		
 		<script src="data/especulacionecologistas.js"></script>
 		<script src="data/ruinasmodernas.js"></script>
 		<script src="data/nacionrotonda.js"></script>
 		<script src="data/6000km.js"></script>
 		<script src="data/mediturban.js"></script>
-		<script src="data/neoruinas	.js"></script>
+		<script src="data/neoruinas.js"></script>
 		
-		<script src="js/leaflet.js"></script>
+		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 		<div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="width: 100%; height: 600px; position: relative;"></div>
 		<div class="page-footer">
 			<p>Contribuye mejorando el C&oacute;digo en <a href="https://github.com/montera34/previohbdpci">https://github.com/montera34/previohbdpci</a></p>
@@ -43,36 +42,13 @@
 	</div>
 </div>
 <script>
-		var map = L.map('map').setView([37, -2], 5);
-
-
-		L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-			maxZoom: 18,
-			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
-				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
-			id: 'examples.map-20v6611k'
-		}).addTo(map);
-
-
-		/*function onEachFeature(feature, layer) {
-			var popupContent = "<p>I started out as a GeoJSON " +
-					feature.geometry.type + ", but now I'm a Leaflet vector!</p>";
-
-			if (feature.properties && feature.properties.description) {
-				popupContent += feature.properties.description;
-			}
-
-			layer.bindPopup(description);
-		}*/
-		
+				
 		function onEachFeature(feature, layer) {
     // does this feature have a property named description?
     if (feature.properties && feature.properties.name) {
         layer.bindPopup("<strong>"+feature.properties.name+"</strong><br>"+feature.properties.description);
 				}
 		}
-
 		
 		var especulacionOptions = {
 		  radius: 8,
@@ -129,52 +105,95 @@
 		};
 		
 		//nacion rotonda
-		var myLayer = L.geoJson(nacionrotonda, {
+		var nrotonda = new L.LayerGroup();
+		L.geoJson(nacionrotonda, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, nacionrotondaOptions);
 		  }
-		}).addTo(map);
+		}).addTo(nrotonda);
 		
 		//ecologistas
-		var myLayer2 = L.geoJson(especulacionecologistas, {
+		var ecolog = new L.LayerGroup();
+		L.geoJson(especulacionecologistas, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, especulacionOptions);
 		  }
-		}).addTo(map);
+		}).addTo(ecolog);
 		
 		//ruinas modernas
-		var myLayer2 = L.geoJson(ruinasmodernas, {
+		var ruinas = new L.LayerGroup();
+		L.geoJson(ruinasmodernas, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, ruinasOptions);
 		  }
-		}).addTo(map);
+		}).addTo(ruinas);
 
 		//6000km
-		var myLayer4 = L.geoJson(db6000km, {
+		var seismil = new L.LayerGroup(); 
+		L.geoJson(db6000km, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, db6000kmOptions);
 		  }
-		}).addTo(map);
+		}).addTo(seismil);
 		
 		//mediturban
-		var myLayer5 = L.geoJson(mediturban, {
+		var medit = new L.LayerGroup();  
+		L.geoJson(mediturban, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, mediturbanOptions);
 		  }
-		}).addTo(map);
+		}).addTo(medit);
 		
 		//neoruinas
-		var myLayer6 = L.geoJson(neoruinas, {
+		var neo = new L.LayerGroup();  
+		L.geoJson(neoruinas, {
 			onEachFeature: onEachFeature,
 		  pointToLayer: function (feature, latlng) {
 		      return L.circleMarker(latlng, neoruinasOptions);
 		  }
-		}).addTo(map);
+		}).addTo(neo);
+		
+		var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+				'<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+				'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+		mbUrl = 'https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png';
+			
+		var simple  = L.tileLayer(mbUrl, {id: 'examples.map-20v6611k',attribution: mbAttr});
+		
+		var pnoa = L.tileLayer.wms("http://www.ign.es/wms-inspire/pnoa-ma", {
+			layers: 'OI.OrthoimageCoverage',
+			format: 'image/jpeg',
+			transparent: false,
+			version: '1.3.0',
+			attribution: "PNOA WMS. Cedido por © Instituto Geográfico Nacional de España"
+		});
+
+		var map = L.map('map', {
+			center: [36, -2],
+			zoom: 5,
+			layers: [simple,nrotonda,ecolog,ruinas,seismil,medit,neo]
+		});
+
+		var baseLayers = {
+			"Mapa": simple,
+			"Ortofoto": pnoa
+		};
+
+		var overlays = {
+			"Nación Rotonda": nrotonda,
+			"Especulación (ecologistas en acción)": ecolog,
+			"Ruinas Modernas": ruinas,
+			"6000 km": seismil,
+			"Medit Urban": medit,
+			"Neoruinas (Tenerife)": neo
+		};
+
+		L.control.layers(baseLayers, overlays).addTo(map);
 		
 	</script>
 </body>
