@@ -17,7 +17,7 @@
 		<div id="desc">
       <p>Superposici&oacute;n de bases de datos de estudios previos sobre cad&aacute;veres inmobiliarios. <br>
       Puedes ver algunos de los <a href="http://6000km.org/cadaveres/site/mapas.html">proyectos participantes en esta web</a>.<br>
-      <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n sobre el proyecto Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</a>.<br>
+      <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n sobre el proyecto</a>.<br>
       <p id="leyenda">Leyenda:
       	<span style="background-color:#0033CC;color:white;">6000km</span>
       	<span style="background-color:#DD0000;color:white;">Especulaci&oacute;n (Ecologistas en Acci&oacute;n)</span>
@@ -41,10 +41,10 @@
 		<div class="page-footer">
 		<p>Proyectos que participan aportando sus datos:<br>
 		<ul>
-			<li><a href="http://6000km.org/localizaciones/">6.000km (Basurama)</a></li>
+			<li><a href="http://6000km.org/mapa/">6.000km (Basurama)</a></li>
 			<li><a href="http://ecowiki.ecologistasenaccion.org/wiki/Mapa_de_la_especulaci%C3%B3n_2012">Mapa de Especlaci&oacute;n (Ecologistas en Acción)</a></li>
 			<li><a href="http://mediturban.blogspot.com.es/2014/03/gestion-integral-para-el-reciclaje-de.html">Medit_Urban</a></li>
-			<li><a href="http://www.nacionrotonda.com/">Nación Rotonda</a></li>
+			<li><a href="http://www.nacionrotonda.com/p/mapa-de-entradas.html">Nación Rotonda</a></li>
 			<li><a href="https://www.facebook.com/neoruinas">Neo-Ruinas</a></li>
 			<li><a href="http://www.juliaschulzdornburg.com/?page_id=644">Ruinas contemporáneas</a></li>
 		</ul>
