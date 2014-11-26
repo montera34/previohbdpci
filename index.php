@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
 <head profile="http://gmpg.org/xfn/11">
-	<title>Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios. Estudios previos</title>
+	<title>Estudios previos. Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</title>
 	<meta http-equiv="content-type" content="text/html"/>
 	<meta name="description" content="hacia base de datos publica burbuja inmobiliaria. Estudios previos" />
 	<meta charset="utf-8">
@@ -13,16 +13,18 @@
 <body>
 <div id="fb-root"></div>
 	<div class="container main-container">
-		<h1>Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</h1>
+		<h1>Estudios previos. Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</h1>
 		<div id="desc">
-      <p>Superposici&oacute;n de bases de datos de estudios previos. <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n</a>.<br>
-      <p id="leyenda">Leyenda: 
+      <p>Superposici&oacute;n de bases de datos de estudios previos sobre cad&aacute;veres inmobiliarios. <br>
+      Puedes ver algunos de los <a href="http://6000km.org/cadaveres/site/mapas.html">proyectos participantes en esta web</a>.<br>
+      <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n sobre el proyecto Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</a>.<br>
+      <p id="leyenda">Leyenda:
+      	<span style="background-color:#0033CC;color:white;">6000km</span>
       	<span style="background-color:#DD0000;color:white;">Especulaci&oacute;n (Ecologistas en Acci&oacute;n)</span>
+      	<span style="background-color:#FF66CC;color:white;">Medit Urban</span>
+      	<span style="background-color:#339900;color:white;">Naci&oacute;n Rotonda</span>
+      	<span style="background-color:#990099;color:white;">Neoruinas (Tenerife)</span>
       	<span style="background-color:#FFFF00;">Ruinas modernas</span>
-      	<span style="background-color:#339900;color:white">Naci&oacute;n Rotonda</span>
-      	<span style="background-color:#0033CC;color:white">6000km</span>
-      	<span style="background-color:#FF66CC;color:white">Medit Urban</span>
-      	<span style="background-color:#990099;color:white">Neoruinas (Tenerife)</span>
       </p>
 		</div>
 		<script src="data/hacia.js"></script>
@@ -37,7 +39,17 @@
 		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 		<div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="width: 100%; height: 600px; position: relative;"></div>
 		<div class="page-footer">
-			<p>Contribuye mejorando el C&oacute;digo en <a href="https://github.com/montera34/previohbdpci">https://github.com/montera34/previohbdpci</a></p>
+		<p>Proyectos que participan aportando sus datos:<br>
+		<ul>
+			<li><a href="http://6000km.org/localizaciones/">6.000km (Basurama)</a></li>
+			<li><a href="http://ecowiki.ecologistasenaccion.org/wiki/Mapa_de_la_especulaci%C3%B3n_2012">Mapa de Especlaci&oacute;n (Ecologistas en Acción)</a></li>
+			<li><a href="http://mediturban.blogspot.com.es/2014/03/gestion-integral-para-el-reciclaje-de.html">Medit_Urban</a></li>
+			<li><a href="http://www.nacionrotonda.com/">Nación Rotonda</a></li>
+			<li><a href="https://www.facebook.com/neoruinas">Neo-Ruinas</a></li>
+			<li><a href="http://www.juliaschulzdornburg.com/?page_id=644">Ruinas contemporáneas</a></li>
+		</ul>
+		</p>
+			<p>Contribuye mejorando el c&oacute;digo en <a href="https://github.com/montera34/previohbdpci">https://github.com/montera34/previohbdpci</a></p>
 		</div>
 	</div>
 </div>
@@ -185,12 +197,12 @@
 		};
 
 		var overlays = {
-			"Nación Rotonda": nrotonda,
-			"Especulación (ecologistas en acción)": ecolog,
-			"Ruinas Modernas": ruinas,
 			"6000 km": seismil,
+			"Especulación (ecologistas en acción)": ecolog,
 			"Medit Urban": medit,
-			"Neoruinas (Tenerife)": neo
+			"Nación Rotonda": nrotonda,
+			"Neoruinas (Tenerife)": neo,
+			"Ruinas Modernas": ruinas
 		};
 
 		L.control.layers(baseLayers, overlays).addTo(map);
