@@ -196,5 +196,6 @@
 		L.control.layers(baseLayers, overlays).addTo(map);
 		
 	</script>
+<?php include "stats.php"; ?>
 </body>
 </html>
