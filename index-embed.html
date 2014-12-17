@@ -10,23 +10,9 @@
 	<link rel="stylesheet" href="css/style.css">
 	
 </head>
-<body>
+<body style="margin: 0;">
 <div id="fb-root"></div>
 	<div class="container main-container">
-		<h1>Estudios previos. Hacia una base de datos p&uacute;blica de cad&aacute;veres inmobiliarios</h1>
-		<div id="desc">
-      <p>Superposici&oacute;n de bases de datos de estudios previos sobre cad&aacute;veres inmobiliarios. <br>
-      Puedes ver algunos de los <a href="http://6000km.org/cadaveres/site/mapas.html">proyectos participantes en esta web</a>.<br>
-      <a href="http://www.6000km.org/2014/11/03/que-paso-en-el-encuentro-de-hacia-una-base-de-datos-publica-de-cadaveres-inmobiliarios/">M&aacute;s informaci&oacute;n sobre el proyecto</a>.<br>
-      <p id="leyenda">Leyenda:
-      	<span style="background-color:#0033CC;color:white;">6000km</span>
-      	<span style="background-color:#DD0000;color:white;">Especulaci&oacute;n (Ecologistas en Acci&oacute;n)</span>
-      	<span style="background-color:#FF66CC;color:white;">Medit Urban</span>
-      	<span style="background-color:#339900;color:white;">Naci&oacute;n Rotonda</span>
-      	<span style="background-color:#990099;color:white;">Neoruinas (Tenerife)</span>
-      	<span style="background-color:#FFFF00;">Ruinas modernas</span>
-      </p>
-		</div>
 		<script src="data/hacia.js"></script>
 		
 		<script src="data/especulacionecologistas.js"></script>
@@ -39,20 +25,7 @@
 		<script src="http://cdn.leafletjs.com/leaflet-0.4.5/leaflet.js"></script>
 		<div tabindex="0" class="leaflet-container leaflet-fade-anim" id="map" style="width: 100%; height: 600px; position: relative;"></div>
 		<div class="page-footer">
-		<p>C&oacute;digo para embeber este mapa
-		<input id="embed_code" style="width:400px" value="<iframe src='http://6000km.org/previohbdpci/index-embed.html' width='500' height='600' frameborder='0' allowfullscreen='allowfullscreen'></iframe>" rel="tooltip" title="Copy + Paste" type="text">
-		</p>
-		<p>Proyectos que participan aportando sus datos:<br>
-		<ul>
-			<li><a href="http://6000km.org/mapa/">6.000km (Basurama)</a></li>
-			<li><a href="http://ecowiki.ecologistasenaccion.org/wiki/Mapa_de_la_especulaci%C3%B3n_2012">Mapa de Especlaci&oacute;n (Ecologistas en Acción)</a></li>
-			<li><a href="http://mediturban.blogspot.com.es/2014/03/gestion-integral-para-el-reciclaje-de.html">Medit_Urban</a></li>
-			<li><a href="http://www.nacionrotonda.com/p/mapa-de-entradas.html">Nación Rotonda</a></li>
-			<li><a href="https://www.facebook.com/neoruinas">Neo-Ruinas</a></li>
-			<li><a href="http://www.juliaschulzdornburg.com/?page_id=644">Ruinas contemporáneas</a></li>
-		</ul>
-		</p>
-			<p>Contribuye mejorando el c&oacute;digo en <a href="https://github.com/montera34/previohbdpci">https://github.com/montera34/previohbdpci</a></p>
+		<p style="font-size:10px;text-align:right;"><a href="http://www.6000km.org/previohbdpci/">Info sobre este mapa</a>.</p>
 		</div>
 	</div>
 </div>
@@ -211,6 +184,5 @@
 		L.control.layers(baseLayers, overlays).addTo(map);
 		
 	</script>
-<?php include "stats.php"; ?>
 </body>
 </html>
